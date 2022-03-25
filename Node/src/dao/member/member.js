@@ -6,6 +6,14 @@ const db = require(`libs/db`);
 
 let sql;
 
+dao_member.select_list = async () => {
+    sql = "SELECT idx, id, nickname, email " +
+        "FROM member " +
+        "ORDER BY created_at ";
+
+    return await db.query(sql);
+};
+
 dao_member.select_member = async (member_idx) => {
     sql = "SELECT idx, id, nickname, email, profile_img_key " +
         "FROM member WHERE idx = ?";

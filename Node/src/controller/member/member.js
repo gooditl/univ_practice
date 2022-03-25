@@ -21,6 +21,14 @@ router.get('/', member.login_check(), async (req, res, next) => {
     res.json(req.member);
 });
 
+
+router.get('/list', async (req, res, next) => {
+    const member_list = await service_member.select_list();
+
+
+    res.json(member_list);
+});
+
 router.post('/login', async (req, res, next) => {
     const { id, password } = req.body;
 

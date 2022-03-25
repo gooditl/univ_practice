@@ -19,7 +19,7 @@ const config = {
         connectionLimit : 20,
         user : 'root',
         password : 'root',
-        database : 'test_db',
+        database : 'test',
         multipleStatements: true,
         port : 3306,
         host:'127.0.0.1', // mysql-server가 있는 aws의 아이피를 넣어두됨 ex) 172.18.0.1

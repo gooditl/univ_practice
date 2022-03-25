@@ -8,6 +8,10 @@ const utils = require(`libs/utils`);
 const member = require(`libs/member`);
 const organizer = require(`libs/organizer`);
 
+service_member.select_list = async () => {
+    return await dao_member.select_list();
+};
+
 service_member.select_member = async (member_idx) => {
     return await dao_member.select_member(member_idx);
 };
