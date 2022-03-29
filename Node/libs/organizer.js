@@ -19,9 +19,9 @@ let sql_creator = async (data, key) => {
 };
 
 organizer.time_additional = {
-    create_only: {col: 'created_at', val: 'UNIX_TIMESTAMP()', set: 'created_at = UNIX_TIMESTAMP()'},
-    create_and_update: {col: 'created_at, updated_at', val: 'UNIX_TIMESTAMP(),UNIX_TIMESTAMP()', set: 'created_at = UNIX_TIMESTAMP(), updated_at = UNIX_TIMESTAMP()'},
-    update_only: {col: 'updated_at', val: 'UNIX_TIMESTAMP()', set: 'updated_at = UNIX_TIMESTAMP()'},
+    create_only: {col: '`created_at`', val: 'UNIX_TIMESTAMP()', set: '`created_at` = UNIX_TIMESTAMP()'},
+    create_and_update: {col: '`created_at`, `updated_at`', val: 'UNIX_TIMESTAMP(),UNIX_TIMESTAMP()', set: '`created_at` = UNIX_TIMESTAMP(), `updated_at` = UNIX_TIMESTAMP()'},
+    update_only: {col: '`updated_at`', val: 'UNIX_TIMESTAMP()', set: '`updated_at` = UNIX_TIMESTAMP()'},
 };
 
 organizer.get_sql = async (data_obj, require_keys, optional_keys, time_additional) => {
@@ -30,8 +30,9 @@ organizer.get_sql = async (data_obj, require_keys, optional_keys, time_additiona
     let sql_set = '';
 
     if(require_keys !== undefined) {
-        if(require_keys.constructor === Array) require_keys = require_keys.toString();
-        require_keys = require_keys.replace(/\s/g, '').split(',');
+        if(require_keys.constructor !== Array) {
+            require_keys = require_keys.replace(/\s/g, '').split(',');
+        }
 
         for (let k of require_keys) {
             let sql_piece = await sql_creator(data_obj[k], k);
@@ -43,8 +44,9 @@ organizer.get_sql = async (data_obj, require_keys, optional_keys, time_additiona
     }
 
     if(optional_keys !== undefined){
-        if(optional_keys.constructor === Array) optional_keys = optional_keys.toString();
-        optional_keys = optional_keys.replace(/\s/g, '').split(',');
+        if(optional_keys.constructor !== Array) {
+            optional_keys = optional_keys.replace(/\s/g, '').split(',');
+        }
 
         for(let k of optional_keys){
             if(data_obj[k] === undefined) continue;
@@ -58,9 +60,9 @@ organizer.get_sql = async (data_obj, require_keys, optional_keys, time_additiona
     }
 
     if(time_additional !== undefined){
-        sql_col += time_additional;
-        sql_val += time_additional;
-        sql_set += time_additional;
+        sql_col += time_additional.col;
+        sql_val += time_additional.val;
+        sql_set += time_additional.set;
     }
 
     return { sql_col, sql_val, sql_set };

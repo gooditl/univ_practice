@@ -11,6 +11,7 @@ const Message = require(`libs/message`);
 
 const db = require(`libs/db`);
 
+router.use('/category', require('./category'));
 
 
 module.exports = router;

@@ -6,7 +6,7 @@ const Message = require(`libs/message`);
 const utils = require(`libs/utils`);
 
 const apis = [
-    'member'
+    'member', 'schedule'
 ];
 
 router.use(async (req, res, next) => {

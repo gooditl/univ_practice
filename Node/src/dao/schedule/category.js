@@ -7,7 +7,7 @@ const db = require(`libs/db`);
 let sql;
 
 dao_schedule_category.select = async () => {
-    sql = "SELECT name " +
+    sql = "SELECT idx, name " +
         "FROM soccer_schedule_category " +
         "ORDER BY name ";
 
