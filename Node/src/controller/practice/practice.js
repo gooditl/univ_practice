@@ -32,7 +32,6 @@ router.post('/random', async (req, res, next) => {
 
     const random_number = parseInt(Math.random()*max_number)+1;
 
-
     res.json({
         random_number
     })
