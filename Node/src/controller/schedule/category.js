@@ -5,6 +5,7 @@ const validator = require(`libs/validator`);
 const member = require(`libs/member`);
 const utils = require(`libs/utils`);
 
+const service_schedule = require(`service/schedule/schedule`);
 const service_schedule_category = require(`service/schedule/category`);
 
 const Message = require(`libs/message`);
@@ -24,11 +25,13 @@ router.post('/', async (req, res, next) => {
 
     req.connector = await db.get_connection();
 
-    await service_schedule_category.insert(req);
+    const result_insert = await service_schedule_category.insert(req);
 
     await db.commit(req.connector);
 
-    res.json(true);
+    res.json({
+        category_idx: result_insert.insertId
+    });
 });
 
 router.use('/:category_idx(\\d+)', (() => {
@@ -59,17 +62,27 @@ router.use('/:category_idx(\\d+)', (() => {
 
         await db.commit(req.connector);
 
-        res.json(true);
+        res.json({
+            result: true
+        });
     });
 
     router.delete('/', async (req, res, next) => {
+        const {total_cnt} = await service_schedule.select(req.category_info.idx);
+
+        if(total_cnt !== 0){
+            throw Message.DETAIL_ERROR('경기 일정이 있는 카테고리는 삭제할 수 없습니다.');
+        }
+
         req.connector = await db.get_connection();
 
         await service_schedule_category.delete(req, req.category_info.idx);
 
         await db.commit(req.connector);
 
-        res.json(true);
+        res.json({
+            result: true
+        });
     });
 
 
