@@ -39,16 +39,26 @@ service_schedule_category.update = async (req) => {
 
     req.organized_sql = await organizer.get_sql(
         data_obj, Object.keys(data_obj),
-        undefined, organizer.time_additional.create_only
+        undefined, organizer.time_additional.update_only
     );
 
-    const result_insert = await dao_schedule_category.insert(req);
+    const result_update = await dao_schedule_category.update(req);
 
-    if(result_insert.affectedRows !== 1){
+    if(result_update.affectedRows !== 1){
         throw Message.SERVER_ERROR;
     }
 
-    return result_insert;
+    return result_update;
+};
+
+service_schedule_category.delete = async (req) => {
+    const result_delete = await dao_schedule_category.delete(req);
+
+    if(result_delete.affectedRows !== 1){
+        throw Message.SERVER_ERROR;
+    }
+
+    return result_delete;
 };
 
 
