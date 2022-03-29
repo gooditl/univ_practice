@@ -18,12 +18,19 @@ let sql_creator = async (data, key) => {
     return { sql_col, sql_val, sql_set };
 };
 
-organizer.get_sql = async (data_obj, require_keys, optional_keys) => {
+organizer.time_additional = {
+    create_only: {col: 'created_at', val: 'UNIX_TIMESTAMP()', set: 'created_at = UNIX_TIMESTAMP()'},
+    create_and_update: {col: 'created_at, updated_at', val: 'UNIX_TIMESTAMP(),UNIX_TIMESTAMP()', set: 'created_at = UNIX_TIMESTAMP(), updated_at = UNIX_TIMESTAMP()'},
+    update_only: {col: 'updated_at', val: 'UNIX_TIMESTAMP()', set: 'updated_at = UNIX_TIMESTAMP()'},
+};
+
+organizer.get_sql = async (data_obj, require_keys, optional_keys, time_additional) => {
     let sql_col = '';
     let sql_val = '';
     let sql_set = '';
 
     if(require_keys !== undefined) {
+        if(require_keys.constructor === Array) require_keys = require_keys.toString();
         require_keys = require_keys.replace(/\s/g, '').split(',');
 
         for (let k of require_keys) {
@@ -36,6 +43,7 @@ organizer.get_sql = async (data_obj, require_keys, optional_keys) => {
     }
 
     if(optional_keys !== undefined){
+        if(optional_keys.constructor === Array) optional_keys = optional_keys.toString();
         optional_keys = optional_keys.replace(/\s/g, '').split(',');
 
         for(let k of optional_keys){
@@ -47,6 +55,12 @@ organizer.get_sql = async (data_obj, require_keys, optional_keys) => {
             sql_val += sql_piece.sql_val;
             sql_set += sql_piece.sql_set;
         }
+    }
+
+    if(time_additional !== undefined){
+        sql_col += time_additional;
+        sql_val += time_additional;
+        sql_set += time_additional;
     }
 
     return { sql_col, sql_val, sql_set };
