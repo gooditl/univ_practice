@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>로또</title>
+
+<!--    주석 하는 방법은 Ctrl + /-->
+<!--    CSS를 적용하는 소스-->
+    <link rel="stylesheet" href="/css/lotto/lotto.css"/>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+
+<body>
+
+<h1>로또 번호 추첨기</h1>
+<button onclick="doSomething()">
+    로또번호추첨
+</button>
+
+<div>
+    <table id="lotto_list">
+        <tr>
+            <td class="lotto_number">1</td>
+            <td class="lotto_number">1</td>
+            <td class="lotto_number">1</td>
+            <td class="lotto_number">1</td>
+        </tr>
+        <tr>
+            <td class="lotto_number">1</td>
+            <td class="lotto_number">1</td>
+            <td class="lotto_number">1</td>
+            <td class="lotto_number">1</td>
+        </tr>
+    </table>
+</div>
+
+
+<!--<script>-->
+<!--        var lotto = [];-->
+<!--        while (lotto.length < 6)-->
+<!--        {-->
+<!--        var num = parseInt(Math.random() * 45 + 1);-->
+<!--        if (lotto.indexOf(num) == -1)-->
+<!--        {-->
+<!--        lotto.push(num);-->
+<!--        }-->
+
+<!--        }-->
+<!--        lotto.sort((a,b)=>a-b);-->
+<!--        document.write("<div class='ball ball1'>" + lotto[0] + "</div>");-->
+<!--        document.write("<div class='ball ball2'>" + lotto[1] + "</div>");-->
+<!--        document.write("<div class='ball ball3'>" + lotto[2] + "</div>");-->
+<!--        document.write("<div class='ball ball4'>" + lotto[3] + "</div>");-->
+<!--        document.write("<div class='ball ball5'>" + lotto[4] + "</div>");-->
+<!--        document.write("<div class='ball ball6'>" + lotto[5] + "</div>");-->
+<!--</script>-->
+
+
+<script>
+    const lotto_history_list = [];
+
+    async function doSomething() {
+        const lotto_numbers = [];
+
+        const url = 'http://127.0.0.1:15555/api/practice/random?';
+        const params = {max_number:45};
+
+        while(lotto_numbers.length < 6) {
+            const random_number = await new Promise(async (resolve) => {
+                $.ajax({
+                    method: 'POST',
+                    url: url,
+                    dataType: "json",
+                    contentType : 'application/json',
+                    data: JSON.stringify(params),
+                    success: function (response) {
+                        const randomNumber = response.random_number;
+                        resolve(randomNumber);
+                    },
+                    error: function (err) {
+                        alert(err.responseJSON.message)
+                    }
+                })
+            });
+
+            if(lotto_numbers.indexOf(random_number) === -1) {
+                lotto_numbers.push(random_number);
+
+            }
+        }
+
+        lotto_history_list.push(lotto_numbers);
+
+        const lotto_list_div = document.querySelector('#lotto_list');
+
+        let html = '';
+
+        for(let l of lotto_history_list){
+            html += '<tr>';
+
+            for(let number of l){
+                html += '<td class="lotto_number">' + number + '</td>';
+            }
+
+            html += '</tr>';
+        }
+
+        lotto_list_div.innerHTML = html;
+
+        // lotto_list_div.innerHTML = '<tr>' +
+        //     '<td class="lotto_number">1</td>' +
+        //     '<td class="lotto_number">1</td>' +
+        //     '<td class="lotto_number">1</td>' +
+        //     '<td class="lotto_number">1</td>' +
+        //     '</tr>' +
+        //     '<tr>' +
+        //     '<td class="lotto_number">1</td>' +
+        //     '<td class="lotto_number">1</td>' +
+        //     '<td class="lotto_number">1</td>' +
+        //     '<td class="lotto_number">1</td>' +
+        //     '</tr>' +
+        //     '<tr>' +
+        //     '<td class="lotto_number">1</td>' +
+        //     '<td class="lotto_number">1</td>' +
+        //     '<td class="lotto_number">1</td>' +
+        //     '<td class="lotto_number">1</td>' +
+        //     '</tr>' +
+        //     '';
+    }
+
+</script>
+</body>
+
+</html>

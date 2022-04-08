@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>멤버 정보</title>
+    <link rel="stylesheet" href="/css/member/info.css"/>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+</head>
+<body>
+    <h1>로또 번호 추첨기</h1>
+    <script>
+    <div>
+    var lotto = [];
+    while (lotto.length < 6) {
+        var num = parseInt(Math.random() * 45 + 1);
+        if (lotto.indexOf(num) == -1) {
+            lotto.push(num);
+        }
+    }
+    lotto.sort((a,b)=>a-b);
+    document.write("<div class='ball ball1'>" + lotto[0] + "</div>");
+    document.write("<div class='ball ball2'>" + lotto[1] + "</div>");
+    document.write("<div class='ball ball3'>" + lotto[2] + "</div>");
+    document.write("<div class='ball ball4'>" + lotto[3] + "</div>");
+    document.write("<div class='ball ball5'>" + lotto[4] + "</div>");
+    document.write("<div class='ball ball6'>" + lotto[5] + "</div>");
+    </div>
+
+    <button onclick="doSomething()">
+        계산하기
+    </button>
+    </script>
+
+</body>
+<script>
+
+    function doSomething() {
+
+
+        const url = 'http://127.0.0.1:15555/api/practice/?' +
+            '&number1=' + number1 + '' +
+            '&number2=' + number2 + '' +
+            '&cal_type=' + cal_type;
+
+        console.log(url);
+
+        $.ajax({
+            method: 'GET',
+            url: url,
+            dataType: "json",
+            success: function(response) {
+                console.log(response)
+                alert(response.result)
+            },
+            error: function(err) {
+                alert(err.responseJSON.message)
+            }
+        })
+
+</script>
+</html>

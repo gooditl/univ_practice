@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>멤버 정보</title>
+    <link rel="stylesheet" href="/css/member/info.css"/>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+
+<div>
+    number1
+    <input id="number1" type="number" value=""/>
+</div>
+<div>
+    number2
+    <input id="number2" type="number" value=""/>
+</div>
+<div>
+    cal_type
+    <input id="cal_type" type="text" value=""/>
+</div>
+
+<br>
+<button onclick="doSomething()">
+    먼가하기
+</button>
+</body>
+
+<script>
+    /**
+     *
+     * http://127.0.0.1:15555/api/schedule/category?number1=10&number2=12&cal_type=plus
+     * 22
+     */
+    function doSomething() {
+        const number1 = document.querySelector('#number1').value;
+        const number2 = document.querySelector('#number2').value;
+        const cal_type = document.querySelector('#cal_type').value;
+
+        const url = 'http://127.0.0.1:15555/api/practice?' +
+            'number1=' + number1 + '' +
+            '&number2=' + number2 + '' +
+            '&cal_type=' + cal_type;
+
+        $.ajax({
+            method: 'GET',
+            url: url,
+            dataType: "json",
+            success: function(response) {
+                console.log(response)
+                alert(response.result)
+            },
+            error: function(err) {
+                alert(err.responseJSON.message)
+            }
+        })
+    }
+
+    function insertCategory() {
+        const idName = document.querySelector('#categoryName').value;
+
+        const name_name = document.querySelector('input[name="category_name"]').value;
+
+        const params = {name: idName};
+
+        $.ajax({
+            method: 'post',
+            url: url,
+            dataType: "json",
+            contentType : 'application/json',
+            data: JSON.stringify(params),
+            success: function(response) {
+                console.log(response)
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        })
+    }
+
+
+</script>
+
+</html>

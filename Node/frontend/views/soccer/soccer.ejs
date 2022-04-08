@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>멤버 정보</title>
+    <link rel="stylesheet" href="/css/member/info.css"/>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+<input id="categoryName" name="category_name" value=""/>
+<br>
+<button onclick="selectCategory()">
+보기 버튼111
+</button>
+<button onclick="insertCategory()">
+등록 버튼
+</button>
+
+</body>
+
+<script>
+    const url = 'http://127.0.0.1:15555/api/schedule/category';
+
+    function selectCategory() {
+        $.ajax({
+            method: 'GET',
+            url: url,
+            dataType: "json",
+            success: function(response) {
+                console.log(response)
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        })
+    }
+
+    function insertCategory() {
+        const idName = document.querySelector('#categoryName').value;
+
+        const name_name = document.querySelector('input[name="category_name"]').value;
+
+        const params = {name: idName};
+
+        $.ajax({
+            method: 'post',
+            url: url,
+            dataType: "json",
+            contentType : 'application/json',
+            data: JSON.stringify(params),
+            success: function(response) {
+                console.log(response)
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        })
+    }
+</script>
+
+</html>

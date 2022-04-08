@@ -13,12 +13,12 @@ router.get('/', function(req, res, next) {
     res.render('index', {title});
 });
 
+router.use('/member', require('./member/member'));
+router.use('/soccer', require('./soccer/soccer'));
+router.use('/practice', require('./practice/practice'));
+router.use('/lotto', require('./lotto/lotto'));
+router.use('/book', require('./book/book'));
 
-let apis = ['member'];
-
-for(let api of apis){
-    router.use('/' + api, require('./' + api + '/' + api));
-}
 
 
 module.exports = router;

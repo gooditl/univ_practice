@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API practice</title>
+    <link rel="stylesheet" href="../css/book/book.css">
+
+</head>
+
+<body>
+
+<input id="bookName" value="" type="text" />
+<button id="search">책검색</button>
+<button id="search1">웹문서 검색</button>
+<button id="search2">블로그 검색</button>
+<button type="button" onClick="refreshPage()">다시검색</button>
+<h1></h1>
+
+<script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"
+></script>
+<script>
+    // 책 검색
+    $(document).ready(function () {
+        $("#search").click(function () {
+            $.ajax({
+                method: "GET",
+                url: "https://dapi.kakao.com/v3/search/book?target=title",
+                data: { query: $("#bookName").val() },
+                headers: {Authorization: "KakaoAK fce2b69ccec73b018400c01ace7cbfca",
+                },
+            }).done(function (msg) {
+                const documentList = msg.documents;
+
+                console.log(documentList[0])
+
+                for(const document of documentList){
+                    $("h1").append("<img src='" + document.thumbnail + "'/>");
+                    $("h1").append("<p><strong>" + document.title + "</strong></p>");
+                    $("h1").append("<p><strong>" + document.price + "원</strong></p>");
+                    $("h1").append("<strong>" + document.url + "</strong>");
+
+
+                }
+            });
+        });
+    });
+    // 웹 문서 검색
+    $(document).ready(function () {
+            $("#search1").click(function () {
+                $.ajax({
+                    method: "GET",
+                    url: "https://dapi.kakao.com/v2/search/web",
+                    data: { query: $("#bookName").val() },
+                    headers: {Authorization: "KakaoAK fce2b69ccec73b018400c01ace7cbfca",
+                    },
+                }).done(function (msg) {
+                    const documentList = msg.documents;
+
+                    console.log(documentList[0])
+
+                    for (const document of documentList) {
+                        $("h1").append("<p><strong>" + document.title + "</strong></p>");
+                        $("h1").append("<strong src='" + document.contents + "'/strong>");
+                        $("h1").append("<strong>" + document.url + "</strong>");
+
+                    }
+                });
+            });
+        });
+    // 블로그 검색
+    $(document).ready(function () {
+        $("#search2").click(function () {
+            $.ajax({
+                method: "GET",
+                url: "https://dapi.kakao.com/v2/search/blog",
+                data: { query: $("#bookName").val() },
+                headers: {Authorization: "KakaoAK fce2b69ccec73b018400c01ace7cbfca",
+                },
+            }).done(function (msg) {
+                const documentList = msg.documents;
+
+                console.log(documentList[0])
+
+                for (const document of documentList) {
+                    $("h1").append("<p><strong>" + document.title + "</strong></p>");
+                    $("h1").append("<strong>" + document.blogname + "</strong>");
+                    $("h1").append("<strong>" + document.url + "</strong>");
+                    $("h1").append("<img src'" + document.thumbnail + "'/>");
+
+
+                }
+            });
+        });
+    });
+    function refreshPage(){
+        window.location.reload();
+    }
+
+</script>
+</body>
+</html>
