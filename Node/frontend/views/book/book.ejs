@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>API practice</title>
     <link rel="stylesheet" href="../css/book/book.css">
+    <link rel="stylesheet" href="../css/web/web.css">
+    <link rel="stylesheet" href="../css/search/search.css">
+    <link rel="stylesheet" href="../css/blog/book.css">
+
+
 
 </head>
 
 <body>
 
-<input id="bookName" value="" type="text" />
+<p><input id="searchBox" value="" type="text" /></p>
 <button id="search">책검색</button>
 <button id="search1">웹문서 검색</button>
 <button id="search2">블로그 검색</button>
@@ -30,7 +35,7 @@
             $.ajax({
                 method: "GET",
                 url: "https://dapi.kakao.com/v3/search/book?target=title",
-                data: { query: $("#bookName").val() },
+                data: { query: $("#searchBox").val() },
                 headers: {Authorization: "KakaoAK fce2b69ccec73b018400c01ace7cbfca",
                 },
             }).done(function (msg) {
@@ -55,7 +60,7 @@
                 $.ajax({
                     method: "GET",
                     url: "https://dapi.kakao.com/v2/search/web",
-                    data: { query: $("#bookName").val() },
+                    data: { query: $("#searchBox").val() },
                     headers: {Authorization: "KakaoAK fce2b69ccec73b018400c01ace7cbfca",
                     },
                 }).done(function (msg) {
@@ -78,7 +83,7 @@
             $.ajax({
                 method: "GET",
                 url: "https://dapi.kakao.com/v2/search/blog",
-                data: { query: $("#bookName").val() },
+                data: { query: $("#searchBox").val() },
                 headers: {Authorization: "KakaoAK fce2b69ccec73b018400c01ace7cbfca",
                 },
             }).done(function (msg) {
