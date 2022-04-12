@@ -1,4 +1,11 @@
-#search2{
-    width: 100px;
-    font-family: '돋움',dotum,sans-serif;
+#searchBlog{
+    height: 39px;
+    padding: 0 8px;
+    line-height: 39px;
+    font-size: 14px;
+    letter-spacing: -0.3px;
+    font-weight: bold;
+    white-space: nowrap;
+    color: #000;
+    text-decoration: none;
 }

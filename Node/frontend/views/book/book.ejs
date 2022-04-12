@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/book/book.css">
     <link rel="stylesheet" href="../css/web/web.css">
     <link rel="stylesheet" href="../css/search/search.css">
-    <link rel="stylesheet" href="../css/blog/book.css">
+    <link rel="stylesheet" href="../css/blog/blog.css">
 
 
 
@@ -16,9 +16,9 @@
 <body>
 
 <p><input id="searchBox" value="" type="text" /></p>
-<button id="search">책검색</button>
-<button id="search1">웹문서 검색</button>
-<button id="search2">블로그 검색</button>
+<button id="searchBook">책검색</button>
+<button id="searchWeb">웹문서 검색</button>
+<button id="searchBlog">블로그 검색</button>
 <button type="button" onClick="refreshPage()">다시검색</button>
 <h1></h1>
 
@@ -31,7 +31,7 @@
 <script>
     // 책 검색
     $(document).ready(function () {
-        $("#search").click(function () {
+        $("#searchBook").click(function () {
             $.ajax({
                 method: "GET",
                 url: "https://dapi.kakao.com/v3/search/book?target=title",
@@ -56,7 +56,7 @@
     });
     // 웹 문서 검색
     $(document).ready(function () {
-            $("#search1").click(function () {
+            $("#searchWeb").click(function () {
                 $.ajax({
                     method: "GET",
                     url: "https://dapi.kakao.com/v2/search/web",
@@ -79,7 +79,7 @@
         });
     // 블로그 검색
     $(document).ready(function () {
-        $("#search2").click(function () {
+        $("#searchBlog").click(function () {
             $.ajax({
                 method: "GET",
                 url: "https://dapi.kakao.com/v2/search/blog",
