@@ -1,5 +1,7 @@
 /*web*/
 #searchWeb{
+    margin:auto;
+    display:block;
     height: 39px;
     padding: 0 8px;
     line-height: 39px;

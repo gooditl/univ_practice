@@ -8,18 +8,18 @@
     <link rel="stylesheet" href="../css/web/web.css">
     <link rel="stylesheet" href="../css/search/search.css">
     <link rel="stylesheet" href="../css/blog/blog.css">
-
-
+    <link rel="stylesheet" href="../css/restart/restart.css">
 
 </head>
 
 <body>
 
+
 <p><input id="searchBox" value="" type="text" /></p>
 <button id="searchBook">책검색</button>
 <button id="searchWeb">웹문서 검색</button>
 <button id="searchBlog">블로그 검색</button>
-<button type="button" onClick="refreshPage()">다시검색</button>
+<button id="button1" onClick="refreshPage()">다시검색</button>
 <h1></h1>
 
 
@@ -47,7 +47,7 @@
                     $("h1").append("<img src='" + document.thumbnail + "'/>");
                     $("h1").append("<p><strong>" + document.title + "</strong></p>");
                     $("h1").append("<p><strong>" + document.price + "원</strong></p>");
-                    $("h1").append("<strong>" + document.url + "</strong>");
+                    $("h1").append("<p><p><p><strong>" + document.url + "</strong></p></p></p>");
 
 
                 }

@@ -1,8 +1,8 @@
-#searchBlog{
-
+#button1 {
     margin:auto;
     display:block;
 
+    position: relative;
     height: 39px;
     padding: 0 8px;
     line-height: 39px;
@@ -12,6 +12,4 @@
     white-space: nowrap;
     color: #000;
     text-decoration: none;
-
-
 }

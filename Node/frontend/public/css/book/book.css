@@ -1,4 +1,7 @@
 #searchBook{
+    margin:auto;
+    display:block;
+
     position: relative;
     height: 39px;
     padding: 0 8px;
@@ -9,4 +12,5 @@
     white-space: nowrap;
     color: #000;
     text-decoration: none;
+
 }
