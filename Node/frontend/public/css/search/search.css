@@ -1,11 +1,14 @@
-body{
-    margin: 0;
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+*{
+
+    font-family: 'Poppins', sans-serif;
     padding: 0;
-    background: white;
+    margin: 0;
 }
 .search-box{
     position: absolute;
-    top: 50%;
+    top: 60%;
     left:50%;
     transform: translate(-50%,-50%);
     background: #2f3640;
@@ -32,7 +35,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 0.4s;
+    transition: 0.9s;
 }
 .search-txt{
     border: none;
@@ -46,3 +49,107 @@ body{
     line-height: 40px;
     width: 0px;
 }
+.bi bi-bar-chart-line{
+    align-items: center;
+}
+
+
+
+body{
+
+    min-height: 100vh;
+    background: linear-gradient(#2b1055,#7597de);
+}
+/*헤더 바*/
+head{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+/*그래프 로고*/
+.navbar_logo{
+    font-size: 50px;
+    color: white;
+    margin-left: 20px;
+}
+.top_graph{
+    padding-right: 900px;
+
+}
+/*헤더바의 graph*/
+.navbar a{
+    color:#fff;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    Letter-spacing:2px;
+}
+
+h2{
+    text-align: center;
+    font-weight: 100;
+    margin-top: 260px;
+    font-size: 50px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+body ul li a:hover,
+body ul li a:active{
+    background: #fff;
+    color: #2b1055;
+}
+
+.navbar_menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ul li{
+    list-style: none;
+    margin-left: 20px;
+}
+ul li a{
+    text-decoration: none;
+    padding: 6px 15px;
+    color: white;
+    border-radius: 20px;
+}
+ul li a:hover{
+    background:white;
+    color: #2b1055;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fa-solid fa-chart-line{
+    padding-left: 40px;
+}
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 160px;
+    height: 50px;
+    border-radius: 4px;
+
+
+}
+#stars{
+    position: absolute;
+    z-index: 1;
+}
+
+

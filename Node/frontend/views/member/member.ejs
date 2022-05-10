@@ -5,15 +5,16 @@
     <link rel="stylesheet" href="/css/member/member.css"/>
 </head>
 <body>
+    <a href="#" class="btn"><span></span><text>DELETE</text></a>
 
-<div class="member_text">
-    멤버 <span class="page_text">페이지</span>
-</div>
 
+    <script>
+        let btn = document.querySelector('.btn');
+        btn.onclick = function (){
+            btn.classList.toggle('active')
+        }
+
+    </script>
 </body>
-
-<script>
-
-</script>
 
 </html>

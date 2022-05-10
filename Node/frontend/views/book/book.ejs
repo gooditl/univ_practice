@@ -5,35 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script defer src="https://kit.fontawesome.com/19a1a35574.js" crossorigin="anonymous"></script>
     <title>API practice</title>
-    <link rel="stylesheet" href="../css/book/book.css">
+
     <link rel="stylesheet" href="../css/web/web.css">
     <link rel="stylesheet" href="../css/search/search.css">
-    <link rel="stylesheet" href="../css/blog/blog.css">
     <link rel="stylesheet" href="../css/restart/restart.css">
 
 </head>
 
 <body>
-<div>
 
-</div>
-<div class="search-box">
-    <input class="search-txt" type="text" name="" placeholder="Type to search">
-    <a class="search-btn" href="#">
-        <i class="fas fa-search"></i>
-    </a>
-</div>
+<a href="#" class="btn"><span></span></a>
+<section>
+    <img src="pic/stars1.png" id="stars"/>
+</section>
+
+    <nav class="navbar">
+        <div class="navbar_logo">
+            <i class="fa-solid fa-chart-line"></i>
+
+        </div>
+        <a class="top_graph" href="">GRAPH</a>
+
+
+        <ul class="navbar_menu">
+            <li><a href="#"class="active">Home</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Wedding</a></li>
+            <li><a href="#">FAQ</a></li>
+        </ul>
+    </nav>
+
+
+
+
+    <h2 href="#" class="graph"> PLEASE SEARCH YOUR GRAPH!</h2>
+
+    <div class="search-box">
+        <input class="search-txt" type="text" name="" placeholder="Type to search">
+        <a class="search-btn" href="#">
+            <i class="fas fa-search"></i>
+        </a>
+    </div>
+
+
 <!--<button id="searchBook">책검색</button>-->
 <!--<button id="searchWeb">웹문서 검색</button>-->
 <!--<button id="searchBlog">블로그 검색</button>-->
-<button id="button1" onClick="refreshPage()">다시검색</button>
-<h1></h1>
+<!--<button id="button1" onClick="refreshPage()">다시검색</button>-->
+<!--<h1></h1>-->
 
 
 <script>
     src="https://code.jquery.com/jquery-3.5.1.js"
     integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"
+</script>
+<script>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-line" viewBox="0 0 16 16">
+        <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z"/>
+    </svg>
 </script>
 <script>
     // // 책 검색
