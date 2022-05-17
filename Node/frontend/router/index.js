@@ -18,6 +18,8 @@ router.use('/soccer', require('./soccer/soccer'));
 router.use('/practice', require('./practice/practice'));
 router.use('/lotto', require('./lotto/lotto'));
 router.use('/book', require('./book/book'));
+router.use('/select', require('./select/select'));
+
 
 
 
