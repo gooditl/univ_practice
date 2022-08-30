@@ -4,74 +4,74 @@
     <meta charset="UTF-8">
     <title>chart.js</title>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<!--    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>-->
+<!--    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>-->
+<!--    -->
+<!--    <style type="text/css">/* Chart.js */-->
+<!--        @keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}</style></head>-->
 
-    <style type="text/css">/* Chart.js */
-    @keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}</style></head>
-    <link rel="stylesheet" href="chart1.css">
+<!--<link rel="stylesheet" href="chart1.css">-->
 <body>
-<div class="chart-container" style="position: relative; height:300px; width:60vw"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-    <canvas id="myChart" width="90" height="200" style="display: block; width: 90px; height: 200px;" class="chartjs-render-monitor"></canvas>
-</div>
+<!--<div class="chart-container" style="position: relative; height:300px; width:60vw"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>-->
+<!--    <canvas id="myChart" width="90" height="200" style="display: block; width: 90px; height: 200px;" class="chartjs-render-monitor"></canvas>-->
+<!--</div>-->
 
-    <button type="button" class="hidden"><span>데이터 변경</span></button>
-    <button type="button" id="addData"><span>데이터 추가</span></button>
-    <button type="button" id="delData"><span>데이터 삭제</span></button>
-    <button type="button" id="addDataSet"><span>데이터셋 추가</span></button>
-    <button type="button" id="delDataset"><span>데이터셋 삭제</span></button>
-    <button id="button" onClick="refreshPage()">데이터 리셋</button>
+<button type="button" class="hidden"><span>데이터 변경</span></button>
+<button type="button" id="addData"><span>데이터 추가</span></button>
+<button type="button" id="delData"><span>데이터 삭제</span></button>
+<button type="button" id="addDataSet"><span>데이터셋 추가</span></button>
+<button type="button" id="delDataset"><span>데이터셋 삭제</span></button>
+<button id="button" onClick="refreshPage()">데이터 리셋</button>
 
 
 <form>
     <a class="hidden">
-    <br><br>
-    y축<br><br>
-    첫번째 그래프 :
-    <input type="text" id="11" value="">
-    <input type="text" id="12" value="">
-    <input type="text" id="13" value="">
-    <input type="text" id="14" value="">
-    <input type="text" id="15" value="">
-    <input type="text" id="16" value="">
-    <input type="text" id="17" value="">
-    <br><br>
-    두번째 그래프 :
-    <input type="text" id="21" value="">
-    <input type="text" id="22" value="">
-    <input type="text" id="23" value="">
-    <input type="text" id="24" value="">
-    <input type="text" id="25" value="">
-    <input type="text" id="26" value="">
-    <input type="text" id="27" value="">
-    <br><br>
-    세번째 그래프 :
-    <input type="text" id="31" value="">
-    <input type="text" id="32" value="">
-    <input type="text" id="33" value="">
-    <input type="text" id="34" value="">
-    <input type="text" id="35" value="">
-    <input type="text" id="36" value="">
-    <input type="text" id="37" value="">
+        <br><br>
+        y축<br><br>
+        첫번째 그래프 :
+        <input type="text" id="11" value="">
+        <input type="text" id="12" value="">
+        <input type="text" id="13" value="">
+        <input type="text" id="14" value="">
+        <input type="text" id="15" value="">
+        <input type="text" id="16" value="">
+        <input type="text" id="17" value="">
+        <br><br>
+        두번째 그래프 :
+        <input type="text" id="21" value="">
+        <input type="text" id="22" value="">
+        <input type="text" id="23" value="">
+        <input type="text" id="24" value="">
+        <input type="text" id="25" value="">
+        <input type="text" id="26" value="">
+        <input type="text" id="27" value="">
+        <br><br>
+        세번째 그래프 :
+        <input type="text" id="31" value="">
+        <input type="text" id="32" value="">
+        <input type="text" id="33" value="">
+        <input type="text" id="34" value="">
+        <input type="text" id="35" value="">
+        <input type="text" id="36" value="">
+        <input type="text" id="37" value="">
 
-    <button type="button" id="reData2">데이터 적용</button>
+        <button type="button" id="reData2">데이터 적용</button>
     </a>
     <button type="button" id="bar">BAR</button>
     <button type="button" id="line">LINE</button>
-    <button type="button" id="bubble">BUBBLE</button>
-    <button type="button" id="pie">PIE</button>
+
 
 </form>
 
 <script>
     var ctx = document.getElementById('myChart');
 
-    var config = {
-        type: 'line',
-        data: {
-            labels: [ // Date Objects
-                'data1',
-                'data2',
+            var config = {
+                type: 'line',
+                data: {
+                    labels: [ // Date Objects
+                        'data1',
+                        'data2',
                 'data3',
                 'data4',
                 'data5',
@@ -94,20 +94,20 @@
                 ],
             },
                 {
-                label: 'My Second dataset',
-                backgroundColor: 'rgba(255, 99, 132, 1)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                fill: false,
-                data: [
-                    Math.floor(Math.random() * 50),
-                    Math.floor(Math.random() * 50),
-                    Math.floor(Math.random() * 50),
-                    Math.floor(Math.random() * 50),
-                    Math.floor(Math.random() * 50),
-                    Math.floor(Math.random() * 50),
-                    Math.floor(Math.random() * 50)
-                ],
-            }]
+                    label: 'My Second dataset',
+                    backgroundColor: 'rgba(255, 99, 132, 1)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    fill: false,
+                    data: [
+                        Math.floor(Math.random() * 50),
+                        Math.floor(Math.random() * 50),
+                        Math.floor(Math.random() * 50),
+                        Math.floor(Math.random() * 50),
+                        Math.floor(Math.random() * 50),
+                        Math.floor(Math.random() * 50),
+                        Math.floor(Math.random() * 50)
+                    ],
+                }]
         },
         options: {
             maintainAspectRatio: false,
@@ -167,8 +167,8 @@
         //데이터셋 수 만큼 반복
         var dataset = config.data.datasets;
         for(var i=0; i<dataset.length; i++){
-                //데이터셋의 데이터 추가
-                dataset[i].data.push(Math.floor(Math.random() * 50));
+            //데이터셋의 데이터 추가
+            dataset[i].data.push(Math.floor(Math.random() * 50));
         }
         myChart.update();	//차트 업데이트
     }
@@ -245,19 +245,12 @@
         window.location.reload();
     }
 
-//버튼으로 바차트 라인차트 변경
+
     const line =document.getElementById('line');
     const bar = document.getElementById('bar');
-    const bubble = document.getElementById('bubble');
-    const pie = document.getElementById('pie');
-
 
     line.addEventListener('click',changeline);
     bar.addEventListener('click',changebar);
-    bubble.addEventListener('click',changebubble);
-    pie.addEventListener('click',changepie);
-
-
 
     function changeline(){
 
@@ -270,17 +263,6 @@
         myChart.config.type=updatetype;
         myChart.update();
     };
-    function changebubble(){
-        const updatetype = 'bubble';
-        myChart.config.type=updatetype;
-        myChart.update();
-    };
-    function changepie(){
-        const updatetype = 'pie';
-        myChart.config.type=updatetype;
-        myChart.update();
-    };
-
 
 
 

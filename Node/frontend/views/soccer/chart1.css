@@ -45,6 +45,10 @@ input {
     padding-left: 10px;
     background-color: rgb(233, 233, 233);
 }
-.chart-container{
+.hidden{
+    opacity: 1;
+}
 
+#hidden:target{
+    opacity: 1;
 }
